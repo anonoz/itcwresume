@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
+ruby "2.3.1"
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -21,6 +23,7 @@ gem "omniauth-google-oauth2"
 
 # Handle resumes upload
 gem "paperclip", "~> 5.0.0"
+gem 'aws-sdk', '~> 2.3.0'
 
 gem "figaro"
 
@@ -38,6 +41,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'sextant'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'students/omniauth_callbacks'
   }
 
-  resource :resume
+  resource :resume, controller: 'resume'
+  resources :resumes
 end

@@ -3,6 +3,7 @@ class Students::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
     @student = Student.from_omniauth(request.env['omniauth.auth'])
 
     if @student.persisted?
+      sign_in @student
       redirect_to resume_path
     else
       render 'mmu_email_error'

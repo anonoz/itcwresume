@@ -1,0 +1,6 @@
+<h1>Your Resume</h1>
+<% if @resume.nil? %>
+  <h2>You have yet to submit one. <%= link_to "Submit now!", new_resume_path %></h2>
+<% else %>
+  <h2>You have upload one.</h2>
+<% end %>
