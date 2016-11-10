@@ -16,7 +16,10 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-# Figaro configuration
-config/application.yml
 # Ignore application configuration
 /config/application.yml
+
+# Dont track Paperclip file uploads
+public/system/
+public/full_time
+public/internship
