@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+  root 'homepage#index'
+
+  devise_for :students, controllers: {
+    omniauth_callbacks: 'students/omniauth_callbacks'
+  }
+
+  resource :resume
 end
