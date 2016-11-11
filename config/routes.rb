@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :employers
   root 'homepage#index'
 
   devise_for :students, controllers: {
