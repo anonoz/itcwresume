@@ -6,7 +6,7 @@ class Student < ApplicationRecord
          :omniauthable, :omniauth_providers => [:google_oauth2]
 
   has_many :resumes
-  has_one :resume, ->{ order 'created_at' }, class_name: "Resume"
+  has_one :resume, ->{ order 'created_at DESC' }, class_name: "Resume"
 
   validate :email_from_mmu
 

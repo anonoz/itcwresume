@@ -2,6 +2,7 @@
 <% if @resume.nil? %>
   <h2>You have yet to submit one. <%= link_to "Submit now!", new_resume_path %></h2>
 <% else %>
-  <h2>You have upload one. <%= link_to "Upload another one?", new_resume_path %></h2>
+  <h2>You have upload <%= link_to "one", @resume.file.url %>. 
+  <%= link_to "Upload another one?", new_resume_path %></h2>
 <% end %>
 <p>Don't worry. You can always reupload.</p>

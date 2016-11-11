@@ -1,6 +1,6 @@
 class Resume < ApplicationRecord
   has_attached_file :file, {
-    url: '/:job_type/:nationality/:student_id-:resume_id.:extension'
+    path: ':job_type/:nationality/:student_id-:resume_id.:extension'
   }
 
   belongs_to :student
@@ -9,7 +9,7 @@ class Resume < ApplicationRecord
   validates :job_type, presence: true
   validates_attachment :file, presence: true,
     content_type: {content_type: ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]}
-  
+
   enum nationality: {
     malaysian: 1,
     foreigner: 2
@@ -20,7 +20,17 @@ class Resume < ApplicationRecord
     internship: 2
   }
 
+  before_create :generate_reupload_count
+
   private
+
+  def generate_reupload_count
+    self.reuploads = student.resumes.count + 1
+  end
+
+  Paperclip.interpolates :s3_sg_url do |attachment, style|
+    "#{attachment.s3_protocol}://s3-ap-southeast-1.amazonaws.com/#{attachment.bucket_name}"
+  end
 
   Paperclip.interpolates :job_type do |attachment, style|
     attachment.instance.job_type
@@ -35,6 +45,6 @@ class Resume < ApplicationRecord
   end
 
   Paperclip.interpolates :resume_id do |attachment, style|
-    attachment.instance.student.resumes.count + 1
+    attachment.instance.reuploads
   end
 end

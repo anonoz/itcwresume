@@ -1,3 +1,9 @@
+development:
+  access_key_id: ENV['AWS_KEY_ID']
+  secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+  region: ap-southeast-1
+
 production:
   access_key_id: ENV['AWS_KEY_ID']
   secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+  region: ap-southeast-1
