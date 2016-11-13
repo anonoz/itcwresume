@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111025949) do
+ActiveRecord::Schema.define(version: 20161113190915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +36,15 @@ ActiveRecord::Schema.define(version: 20161111025949) do
     t.integer  "student_id"
     t.integer  "nationality"
     t.integer  "job_type"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.integer  "reuploads"
+    t.integer  "status",            default: 0
+    t.text     "rejection_reason"
   end
 
   create_table "students", force: :cascade do |t|
@@ -65,6 +67,20 @@ ActiveRecord::Schema.define(version: 20161111025949) do
     t.index ["email"], name: "index_students_on_email", unique: true, using: :btree
     t.index ["provider", "uid"], name: "index_students_on_provider_and_uid", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "vetters", force: :cascade do |t|
+    t.string   "email",               default: "", null: false
+    t.string   "encrypted_password",  default: "", null: false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["email"], name: "index_vetters_on_email", unique: true, using: :btree
   end
 
 end

@@ -5,7 +5,21 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'students/omniauth_callbacks'
   }
   devise_for :employers
+  devise_for :vetters
 
-  resource :resume, controller: 'resume'
-  resources :resumes
+  resource :resume, controller: 'resume' do
+    get 'open'
+  end
+
+  namespace :employers do
+    resources :resumes, only: [:index]
+    get 'contact_us'
+  end
+
+  namespace :vetters do
+    resources :resumes, only: [:index, :show, :update]
+    resources :employers
+  end
+
+  get '404' => 'errors#not_found'
 end

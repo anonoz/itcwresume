@@ -11,7 +11,16 @@ class ResumeController < ApplicationController
 
   def create
     create_resume
-    render json: @resume
+    if @resume.persisted?
+      redirect_to resume_path
+    else
+      render json: @resume.errors
+    end
+  end
+
+  def open
+    set_resume
+    redirect_to @resume.file.url
   end
 
   private

@@ -1,5 +1,5 @@
-class Employer < ApplicationRecord
+class Vetter < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :rememberable, :trackable
+  devise :database_authenticatable, :trackable
 end

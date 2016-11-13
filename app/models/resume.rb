@@ -8,7 +8,7 @@ class Resume < ApplicationRecord
   validates :nationality, presence: true
   validates :job_type, presence: true
   validates_attachment :file, presence: true,
-    content_type: {content_type: ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]}
+    content_type: {content_type: ["application/pdf"]}
 
   enum nationality: {
     malaysian: 1,
@@ -18,6 +18,12 @@ class Resume < ApplicationRecord
   enum job_type: {
     full_time: 1,
     internship: 2
+  }
+
+  enum status: {
+    pending: 0,
+    approved: 1,
+    rejected: 2
   }
 
   before_create :generate_reupload_count
@@ -41,7 +47,9 @@ class Resume < ApplicationRecord
   end
 
   Paperclip.interpolates :student_id do |attachment, style|
-    attachment.instance.student.name.parameterize
+    attachment.instance.student.name.parameterize + 
+    '-' + 
+    (attachment.instance.student.student_id % 1000).to_s
   end
 
   Paperclip.interpolates :resume_id do |attachment, style|

@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">ITCW Resume</a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="<%= 'active' if current_page?(employers_resumes_path) %>">
+          <%= link_to "Search Resumes", employers_resumes_path %>
+        </li>
+        <li class="<%= 'active' if current_page?(employers_contact_us_path) %>">
+          <%= link_to "Contact Us", employers_contact_us_path %>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to "Logout", destroy_employer_session_path, method: :delete %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

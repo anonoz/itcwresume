@@ -1,7 +1,18 @@
 .jumbotron {
   background: #0166b3;
+  color: white;
 
-  h1, p {
-    color: white;
+  &.error {
+    background: #E53935;
+  }
+}
+
+.built-by-me {
+  .show-when-hover {
+    display: none;
+  }
+
+  &:hover .show-when-hover {
+    display: inline;
   }
 }

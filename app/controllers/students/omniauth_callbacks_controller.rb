@@ -1,4 +1,6 @@
 class Students::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  layout 'layouts/homepage'
+  
   def google_oauth2
     @student = Student.from_omniauth(request.env['omniauth.auth'])
 

@@ -1,8 +1,13 @@
-<h1>Your Resume</h1>
+<div class="page-header">
+  <h1>Your Resume</h1>
+</div>
+
 <% if @resume.nil? %>
-  <h2>You have yet to submit one. <%= link_to "Submit now!", new_resume_path %></h2>
-<% else %>
-  <h2>You have upload <%= link_to "one", @resume.file.url %>. 
-  <%= link_to "Upload another one?", new_resume_path %></h2>
+  <%= render 'not_submitted_yet' %>
+<% elsif @resume.pending? %>
+<%= render 'pending' %>
+<% elsif @resume.approved? %>
+  <%= render 'approved' %>
+<% elsif @resume.rejected? %>
+  <%= render 'rejected' %>
 <% end %>
-<p>Don't worry. You can always reupload.</p>
