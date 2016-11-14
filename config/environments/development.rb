@@ -62,6 +62,7 @@ Rails.application.configure do
     },
     s3_host_name: ENV['S3_HOSTNAME'],
     s3_region: ENV['AWS_REGION'],
+    s3_protocol: :https,
     url: ":s3_host_name"
   }
 end
