@@ -1,14 +1,15 @@
 class Resume < ApplicationRecord
-  has_attached_file :file, {
-    path: ':job_type/:nationality/:student_id-:resume_id.:extension'
-  }
+  has_attached_file :file,
+    path: ':job_type/:nationality/:student_id-:resume_id.:extension',
+    preserve_files: true
 
   belongs_to :student
 
   validates :nationality, presence: true
   validates :job_type, presence: true
   validates_attachment :file, presence: true,
-    content_type: {content_type: ["application/pdf"]}
+    content_type: {content_type: ["application/pdf"]},
+    size: { in: 0..1.megabytes }
 
   enum nationality: {
     malaysian: 1,

@@ -1,11 +1,28 @@
 <h1>Upload resume</h1>
+
+<% if flash[:errors] %>
+  <div class="alert alert-danger">
+    <ul>
+      <% if flash[:errors]['file_content_type'] %>
+        <li><b>Whoa!</b> Make sure your resume is in PDF format.</li>
+      <% end %>
+      <% if flash[:errors]['file_file_size'] %>
+        <li><b>Damn!</b> Your resume PDF needs to be less than 1MB in size.</li>
+      <% end %>
+      <% if Rails.env.development? %>
+        <li><%= flash[:errors] %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @resume, url: resume_path, html: { multipart: true } do |form| %>
   <div class="form-group">
     <label>Nationality</label>
     <%= 
       collection_radio_buttons(:resume, :nationality, Resume.nationalities, :first, :first) do |b|
         content_tag(:div, class: :radio) do
-          b.label { b.radio_button + b.text.humanize }
+          b.label { b.radio_button(required: 'required') + b.text.humanize }
         end
       end 
     %>
@@ -16,15 +33,17 @@
     <%= 
       collection_radio_buttons(:resume, :job_type, Resume.job_types, :first, :first) do |b|
         content_tag(:div, class: :radio) do
-          b.label { b.radio_button + b.text.humanize }
+          b.label { b.radio_button(required: 'required') + b.text.humanize }
         end
       end 
     %>
   </div>
 
+  
+
   <div class="form-group">
     <label>Resume in .pdf format &lt;1MB size</label>
-    <%= form.file_field :file %>
+    <%= form.file_field :file, required: 'required' %>
   </div>
 
   <button>Submit</button>

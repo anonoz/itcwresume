@@ -14,7 +14,7 @@ class ResumeController < ApplicationController
     if @resume.persisted?
       redirect_to resume_path
     else
-      render json: @resume.errors
+      redirect_to new_resume_path, flash: {errors: @resume.errors}
     end
   end
 
