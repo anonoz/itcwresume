@@ -96,4 +96,14 @@ Rails.application.configure do
     s3_region: ENV['AWS_REGION'],
     url: ":s3_host_name"
   }
+
+  ActionMailer::Base.smtp_settings = {
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
+    domain: 'itcwresume.herokuapp.com',
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 end

@@ -24,6 +24,7 @@ class Vetters::ResumesController < VettersController
     set_resume
     @resume.update(reject_resume_params.merge(status: :rejected))
     redirect_to action: :index
+    ResumeMailer.rejection_email(@resume).deliver_now
   end
 
   private

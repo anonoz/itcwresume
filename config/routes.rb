@@ -24,5 +24,5 @@ Rails.application.routes.draw do
     resources :employers
   end
 
-  get '404' => 'errors#not_found'
+  get 'not_found' => 'errors#not_found'
 end

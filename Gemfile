@@ -25,6 +25,9 @@ gem "omniauth-google-oauth2"
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2.3.0'
 
+# Send email
+gem 'sendgrid-ruby'
+
 gem "figaro"
 
 group :development, :test do
@@ -42,6 +45,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'sextant'
+  gem 'letter_opener'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
