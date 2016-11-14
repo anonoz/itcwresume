@@ -1,1 +1,89 @@
-<h1>Hello Vetter</h1>
+<div class="page-header">
+  <h2>Pending Resumes: <%= @pending_resumes.count %></h2>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Revision</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pending_resumes.each do |resume| %>
+      <tr>
+        <td>
+          <%= link_to "#{resume.student.name}", resume.file.url, target: '_blank' %>
+        </td>
+        <td>
+          <%= resume.reuploads %>
+        </td>
+        <td>
+          <%= link_to "Approve", approve_vetters_resume_path(resume), method: :patch %>
+        </td>
+        <td>
+          <%= link_to "Reject", edit_vetters_resume_path(resume) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="page-header">
+  <h2>Approved Resumes: <%= @approved_resumes.count %></h2>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @approved_resumes.each do |resume| %>
+      <tr>
+        <td>
+          <%= link_to "#{resume.student.name}", resume.file.url, target: '_blank' %>
+        </td>
+        <td>
+        </td>
+        <td>
+          <%= link_to "Reject", edit_vetters_resume_path(resume) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>
+
+<div class="page-header">
+  <h2>Rejected Resumes: <%= @rejected_resumes.count %></h2>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rejected_resumes.each do |resume| %>
+      <tr>
+        <td>
+          <%= link_to "#{resume.student.name}", resume.file.url, target: '_blank' %>
+        </td>
+        <td>
+          <%= link_to "Approve", approve_vetters_resume_path(resume), method: :patch %>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_vetters_resume_path(resume) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>
+

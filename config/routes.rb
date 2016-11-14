@@ -17,7 +17,10 @@ Rails.application.routes.draw do
   end
 
   namespace :vetters do
-    resources :resumes, only: [:index, :show, :update]
+    resources :resumes, only: [:index, :edit, :update] do
+      patch 'approve', on: :member
+      patch 'reject', on: :member
+    end
     resources :employers
   end
 

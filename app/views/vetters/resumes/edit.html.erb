@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h2>Rejecting Resume</h2>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-lg-6">
+    <iframe src="<%= @resume.file.url %>" width="100%" height="640px"></iframe>
+  </div>
+  <div class="col-xs-12 col-lg-6">
+    <%= form_for @resume, url: reject_vetters_resume_path(@resume), method: :patch do |f| %>
+      <div class="form-group">
+        <label>Rejection Reason</label>
+        <%= f.text_area :rejection_reason, class: 'form-control' %>
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -28,7 +28,9 @@
       </div>
       <div class="panel-body">
         <p>Your resume is rejected. Message:</p>
-        <p><%= @resume.rejection_reason %></p>
+        <div id="rejection-reason">
+          <%= simple_format(@resume.rejection_reason) %>
+        </div>
       </div>
     </div>
   </div>
