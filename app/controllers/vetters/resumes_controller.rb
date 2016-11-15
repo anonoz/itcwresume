@@ -1,12 +1,12 @@
 class Vetters::ResumesController < VettersController
   def index
-    @latest_resumes = Resume.order("created_at DESC")
+    @latest_resumes = Resume.distinct(:student_id).
+      order("created_at DESC").limit(1).all.includes(:student).load
+    @latest_resume_ids = @latest_resumes.pluck(:id)
     
-    @pending_resumes = Resume.pending.includes(:student)
-    @approved_resumes = Resume.approved.order("updated_at DESC").
-      distinct(:student_id).includes(:student)
-    @rejected_resumes = Resume.rejected.order("updated_at DESC").
-      distinct(:student_id).includes(:student)
+    @pending_resumes  = Resume.where(id: @latest_resume_ids).pending
+    @approved_resumes = Resume.where(id: @latest_resume_ids).approved
+    @rejected_resumes = Resume.where(id: @latest_resume_ids).rejected
   end
 
   def show
