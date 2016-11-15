@@ -28,11 +28,16 @@ class Resume < ApplicationRecord
   }
 
   before_create :generate_reupload_count
+  after_create :notify_slackbot
 
   private
 
   def generate_reupload_count
     self.reuploads = student.resumes.count + 1
+  end
+
+  def notify_slackbot
+    SlackbotNotifier.new.notify_resume_upload(self)
   end
 
   Paperclip.interpolates :s3_sg_url do |attachment, style|
