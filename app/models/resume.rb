@@ -30,6 +30,14 @@ class Resume < ApplicationRecord
   before_create :generate_reupload_count
   after_create :notify_slackbot
 
+  scope :latest_submissions, ->{
+    where(id: select("DISTINCT ON(student_id) id")
+      .order("student_id, created_at DESC"))
+  }
+  scope :rejected, ->{ latest_submissions.where(status: :rejected) }
+  scope :pending,  ->{ latest_submissions.where(status: :pending) }
+  scope :approved, ->{ latest_submissions.where(status: :approved) }
+
   private
 
   def generate_reupload_count
