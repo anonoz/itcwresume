@@ -28,7 +28,8 @@ class Resume < ApplicationRecord
   }
 
   before_create :generate_reupload_count
-  after_create :notify_slackbot
+  after_create :notify_slackbot_create
+  before_save :notify_slackbot_status_changed, if: :status_changed?
 
   scope :latest_submissions, ->{
     where(id: select("DISTINCT ON(student_id) id")
@@ -44,8 +45,17 @@ class Resume < ApplicationRecord
     self.reuploads = student.resumes.count + 1
   end
 
-  def notify_slackbot
+  def notify_slackbot_create
     SlackbotNotifier.new.notify_resume_upload(self)
+  end
+
+  def notify_slackbot_status_changed
+    case status
+    when "approved"
+      SlackbotNotifier.new.notify_resume_approved(self)
+    when "rejected"
+      SlackbotNotifier.new.notify_resume_rejected(self)
+    end
   end
 
   Paperclip.interpolates :s3_sg_url do |attachment, style|

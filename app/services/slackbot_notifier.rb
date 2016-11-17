@@ -12,9 +12,23 @@ class SlackbotNotifier
   end
 
   def notify_resume_upload(resume)
-    body = {
-      body: "#{resume.student.name} has uploaded a new resume (rev #{resume.reuploads}). https://itcwresume.herokuapp.com/vetters/resumes",
-    }
-    self.class.post("/services/hooks/slackbot", @options.merge(body))
+    send_message("#{resume.student.name} has uploaded a new resume "\
+      "(rev #{resume.reuploads}). #{Resume.pending.count} pending. ")
+  end
+
+  def notify_resume_approved(resume)
+    send_message("#{resume.student.name}'s resume is approved. "\
+      "#{Resume.pending.count - 1} left to go. ")
+  end
+
+  def notify_resume_rejected(resume)
+    send_message("#{resume.student.name}'s resume is rejected. "\
+      "#{Resume.pending.count - 1} left to go. ")
+  end
+
+  private
+
+  def send_message(message)
+    self.class.post("/services/hooks/slackbot", @options.merge(body: message))
   end
 end
