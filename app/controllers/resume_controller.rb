@@ -1,4 +1,6 @@
 class ResumeController < ApplicationController
+  layout 'layouts/student'
+  
   before_action :authenticate_student!
   
   def show
