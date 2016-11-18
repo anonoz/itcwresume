@@ -47,6 +47,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'sextant'
   gem 'letter_opener'
+  gem 'meta_request'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
