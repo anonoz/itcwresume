@@ -6,61 +6,6 @@
     <small>Use your @student.mmu.edu.my Google account to verify your identity.</small>
   </div>
 </div>
-<div class="container">
-  <h3>Resume Checklist</h3>
-  <ul>
-    <li>Saved in .pdf</li>
-    <li>Contains only 1 page</li>
-    <li>File size limit &lt;1MB</li>
-  </ul>
-  <h3>Put These Inside Your Resume</h3>
-  <ul>
-    <li>Full name</li>
-    <li>Contact information including phone number (with country code), working e-mail address</li>
-    <li>Programming languages and frameworks you are confident in using</li>
-    <li>Additional experiences, leadership experiences, awards, dean's lists</li>
-    <li><b>BONUS:</b> Your side projects and hacks outside your courseworks!</li>
-  </ul>
-  <h3>Do Not Put</h3>
-  <ul>
-    <li>Photo</li>
-    <li>Home Address</li>
-    <li>Irrelevant past job experiences</li>
-    <li>IDEs, text editors, and Microsoft Office as skill sets</li>
-    <li>Programming languages and frameworks that you have only spent 1 day doing tutorial on</li>
-  </ul>
-  <h3>Resources</h3>
-  <ul>
-    <li><a href="http://www.gayle.com/career-advice/" target="_blank">Gayle's Career Advices (important)</a></li>
-    <li><a href="https://forum.lowyat.net/Jobs&Careers" target="_blank">Lowyat.net Forum Jobs &amp; Careers</a></li>
-  </ul>
-  <h3>Samples</h3>
-  <ul>
-    <li><a href="https://docs.google.com/document/d/1XBkgAYrFE8oAL7yTgU_LOwFeGec1gC4JgkblfgPBSLQ/preview?markAsViewed=false&isTemplatePreview=true" target="_blank">Joey</a></li>
-    <li><a href="https://www.anonoz.com/cv.pdf" target="_blank">Anonoz</a></li>
-    <li><a href="/hii-sample.pdf" target="_blank">Hii</a></li>
-  </ul>
-</div>
-<footer class="container">
-  <hr>
-  <div class="row">
-    <div class="col-xs-12 col-md-6">
-      <p>
-        <%= link_to "Employer Login", new_employer_session_path %>
-      </p>
-      <p>
-        <a href="https://www.itcareerweek.org/">IT Career Week</a>
-      </p>
-      <p>
-        <a href="https://www.itsociety.rocks">IT Society MMU Cyberjaya</a>
-      </p>
-      <p>
-        <%= link_to "Volunteer Login", new_vetter_session_path %>
-      </p>
-    </div>
-    <div class="col-xs-12 col-md-6">
-      <p>Copyright 2016 - IT Society MMU Cyberjaya.</p>
-      <p class="built-by-me">Built by Anonoz. <span class="show-when-hover">If you love this website tell me OK.</span></p>
-    </div>
-  </div>
-</footer>
+<%= render "resume_checklist" %>
+<%= render "resource_links" %>
+<%= render "footer" %>
