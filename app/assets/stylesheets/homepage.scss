@@ -5,6 +5,10 @@
     background: #0166b3;
   }
 
+  &.secondary {
+    color: black;
+  }
+
   &.error {
     background: #E53935;
   }
@@ -18,4 +22,9 @@
   &:hover .show-when-hover {
     display: inline;
   }
+}
+
+.btn.btn-transparent {
+  background: rgba(1,1,1,0);
+  color: white;
 }
