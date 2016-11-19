@@ -1,6 +1,9 @@
 .jumbotron {
-  background: #0166b3;
   color: white;
+
+  &.main {
+    background: #0166b3;
+  }
 
   &.error {
     background: #E53935;

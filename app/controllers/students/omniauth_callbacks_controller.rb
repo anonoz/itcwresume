@@ -8,7 +8,7 @@ class Students::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
       sign_in @student
       redirect_to resume_path
     else
-      render 'mmu_email_error'
+      render 'mmu_email_error', status: 401
     end
   end
 end
