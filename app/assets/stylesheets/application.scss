@@ -13,7 +13,10 @@
  *= require_tree .
  *= require_self
  */
+$itcw-color: #0166b3;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "homepage";
 @import "error";
+@import "employer";

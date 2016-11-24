@@ -7,15 +7,28 @@ Rails.application.routes.draw do
   devise_for :employers
   devise_for :vetters
 
+  # STUDENT UI
   resource :resume, controller: 'resume' do
     get 'open'
   end
 
-  namespace :employers do
-    resources :resumes, only: [:index]
-    get 'contact_us'
+  # EMPLOYERS UI
+  get '/resumes' => "employers/resumes#index"
+  scope '/resumes' do
+    get '/search' => "employers/resumes#search", as: :search
+    get '/full-time' => "employers/resumes#full_time", as: :full_time_resumes
+    get '/internship' => "employers/resumes#internship", as: :internship_resumes
   end
+  get "contact_us" => "employers#contact_us"
 
+  # namespace :employers do
+  #   resources :resumes, only: [:index] do
+  #     get '/:job_type', on: :collection, action: :job_type
+  #   end
+  #   get 'contact_us'
+  # end
+
+  # VETTER UI
   namespace :vetters do
     resources :resumes, only: [:index, :edit, :update] do
       patch 'approve', on: :member

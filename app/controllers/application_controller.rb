@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     case resource
-    when Employer then employers_resumes_path
+    when Employer then resumes_path
     when Student then resume_path
     when Vetter then vetters_resumes_path
     else raise 'Unknown Resource'
