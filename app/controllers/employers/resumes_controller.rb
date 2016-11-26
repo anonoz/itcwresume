@@ -6,12 +6,12 @@ class Employers::ResumesController < EmployersController
   end
 
   def full_time
-    @resumes = Resume.full_time.includes(:student)
+    @resumes = Resume.approved.full_time.includes(:student)
     render_scoped_index(resumes: @resumes, resumes_type: "Full-time")
   end
 
   def internship
-    @resumes = Resume.internship.includes(:student)
+    @resumes = Resume.approved.internship.includes(:student)
     render_scoped_index(resumes: @resumes, resumes_type: "Internship")
   end
 
