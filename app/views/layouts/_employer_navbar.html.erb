@@ -13,10 +13,10 @@
     <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="<%= 'active' if current_page?(full_time_resumes_path) %>">
-          <%= link_to "Full-time (#{Resume.full_time.count})", full_time_resumes_path %>
+          <%= link_to "Full-time (#{Resume.approved.full_time.count})", full_time_resumes_path %>
         </li>
         <li class="<%= 'active' if current_page?(internship_resumes_path) %>">
-          <%= link_to "Internship (#{Resume.internship.count})", internship_resumes_path %>
+          <%= link_to "Internship (#{Resume.approved.internship.count})", internship_resumes_path %>
         </li>
         <li class="<%= 'active' if current_page?(contact_us_path) %>">
           <%= link_to "Contact Us", contact_us_path %>
