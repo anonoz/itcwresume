@@ -1,1 +1,32 @@
-<h1><%= %></h1>
+<div class="container" ng-controller="resumes_index_controller" ng-init="init()">
+  <!-- Desktop UI -->
+  <div class="row">
+    <div class="col-xs-12">
+      <input class="form-control" ng-model="search_term" placeholder="Search resume..." />
+    </div>
+  </div>
+  <table class="table table-hover hidden-xs">
+    <thead>
+      <tr>
+        <th class="col-xs-2">Name</th>
+        <th class="col-xs-2">Student ID</th>
+        <th class="col-xs-2">Nationality</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="resume in resumes | filter:search_term" ng-cloak>
+        <td>{{ resume.student_name }}</td>
+        <td>{{ resume.student_id }}</td>
+        <td>{{ resume.nationality }}</td>
+        <td><a href="{{ resume.file_url }}" target="_blank">Resume</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Mobile friendly UI -->
+  <div class="visible-xs">
+    
+  </div>
+  <!-- Data -->
+  <div class="hidden" id="resumes_json"><%= @resumes_json.html_safe %></div>
+</div>

@@ -2,17 +2,17 @@ class Employers::ResumesController < EmployersController
   layout 'layouts/employer'
   
   def index
-    
+
   end
 
   def full_time
-    @resumes = Resume.full_time
-    render :index
+    @resumes = Resume.full_time.includes(:student)
+    render_scoped_index(resumes: @resumes, resumes_type: "Full-time")
   end
 
   def internship
-    @resumes = Resume.internship
-    render :index
+    @resumes = Resume.internship.includes(:student)
+    render_scoped_index(resumes: @resumes, resumes_type: "Internship")
   end
 
   def search
@@ -28,8 +28,16 @@ class Employers::ResumesController < EmployersController
       end
     rescue NoMethodError => e
       if e.name == :file
+        @title = "Resume Not Uploaded"
         render :resume_not_found, status: 404
       end
     end
+  end
+
+  private 
+
+  def render_scoped_index(resumes:, resumes_type:)
+    @resumes_json = @resumes.collect {|resume| Employers::ResumesSerializer.new(resume)}.to_json
+    render :index_scoped
   end
 end
