@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   devise_for :vetters
 
   # STUDENT UI
-  resource :resume, controller: 'resume' do
+  resource :resume, controller: 'students/resume' do
     get 'open'
   end
+  resource :contact_info, controller: 'students/contact_info', via: [:patch]
 
   # EMPLOYERS UI
   get '/resumes' => "employers/resumes#index"

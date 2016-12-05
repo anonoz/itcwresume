@@ -1,0 +1,32 @@
+<div class="col-xs-12 col-lg-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Contact Details</h3>
+    </div>
+    <div class="panel-body">
+      <% if flash[:contact_details_updated] %>
+        <div class="alert alert-success">
+          <b>Saved!</b>
+        </div>
+      <% end %>
+      <p>Leave your contact info here so employers can easily contact you from this app.</p>
+      <hr>
+      <%= form_for @student, url: contact_info_path, method: :patch do |f| %>
+        <div class="form-group">
+          <label for="email_address">E-mail Address:</label>
+          <%= f.text_field :email_address, class: 'form-control', type: 'email', placeholder: 'john.doe14@gmail.com' %>
+        </div>
+        <div class="form-group">
+          <label for="phone_number">Phone Number:</label>
+          <div class="input-group">
+            <div class="input-group-addon">+</div>
+            <%= f.text_field :phone_number, class: 'form-control', type: 'tel', pattern: '\d+', title: 'Country code and phone numbers only', placeholder: '60121234567' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-default">Update</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

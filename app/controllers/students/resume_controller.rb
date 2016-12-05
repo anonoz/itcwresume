@@ -1,9 +1,7 @@
-class ResumeController < ApplicationController
-  layout 'layouts/student'
-  
-  before_action :authenticate_student!
-  
+class Students::ResumeController < StudentsController
+
   def show
+    set_student
     set_resume
   end
 
@@ -26,6 +24,10 @@ class ResumeController < ApplicationController
   end
 
   private
+
+  def set_student
+    @student = current_student
+  end
 
   def set_resume
     @resume = current_student.resume

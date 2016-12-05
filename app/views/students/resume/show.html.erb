@@ -1,0 +1,18 @@
+<div class="page-header">
+  <h2>Prepare For IT Career Week</h2>
+</div>
+
+<div class="row">
+  <% if @resume.nil? %>
+    <%= render 'not_submitted_yet' %>
+  <% elsif @resume.pending? %>
+    <%= render 'pending' %>
+  <% elsif @resume.approved? %>
+    <%= render 'approved' %>
+  <% elsif @resume.rejected? %>
+    <%= render 'rejected' %>
+  <% end %>
+
+  <%= render 'contact_details_form' %>
+  <%= render 'register' %>  
+</div>
