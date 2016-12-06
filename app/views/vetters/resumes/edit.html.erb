@@ -6,12 +6,20 @@
     <iframe src="<%= @resume.file.url %>" width="100%" height="640px"></iframe>
   </div>
   <div class="col-xs-12 col-lg-6">
-    <%= form_for @resume, url: reject_vetters_resume_path(@resume), method: :patch do |f| %>
+    <%= form_for(@resume, url: reject_vetters_resume_path(@resume), method: :patch) do |f| %>
       <div class="form-group">
         <label>Rejection Reason</label>
-        <%= f.text_area :rejection_reason, class: 'form-control' %>
-        <%= f.submit %>
+        <%= f.text_area :rejection_reason, class: 'form-control rejection-reason' %>
+        <%= f.submit class: 'btn btn-danger btn-sm' %>
       </div>
     <% end %>
+    <h4>Rejections history</h4>
+    <table class="table">
+      <% @rejections_history.each do |rejection_reason| %>
+      <tr>
+        <td><%= simple_format(rejection_reason) %></td>
+      </tr>
+      <% end %>
+    </table>
   </div>
 </div>
