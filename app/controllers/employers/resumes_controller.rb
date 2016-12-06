@@ -2,7 +2,7 @@ class Employers::ResumesController < EmployersController
   layout 'layouts/employer'
   
   def index
-
+    redirect_to action: :full_time
   end
 
   def full_time
