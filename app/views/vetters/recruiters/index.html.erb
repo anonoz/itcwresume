@@ -7,7 +7,7 @@
           <tr>
             <th class="col-xs-3">Name</th>
             <th class="col-xs-3">E-mail Address</th>
-            <th><%= link_to "New", new_vetters_company_recruiter_path %></th>
+            <th><%= link_to "New", new_vetters_company_recruiter_path(@company) %></th>
           </tr>
         </thead>
         <tbody>
@@ -16,7 +16,7 @@
             <td><%= recruiter.name %></td>
             <td><%= recruiter.email %></td>
             <td>
-              <%= link_to "Edit", edit_vetters_company_recruiter_path(employer) %>
+              <%= link_to "Edit", edit_vetters_company_recruiter_path(@company, recruiter) %>
             </td>
           </tr>
           <% end %>

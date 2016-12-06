@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'itsoc.mmu@gmail.com'
+  default from: 'IT Career Week Organizer <itsoc.mmu@gmail.com>'
   layout 'mailer'
 end
