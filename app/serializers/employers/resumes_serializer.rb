@@ -1,5 +1,5 @@
 class Employers::ResumesSerializer < ActiveModel::Serializer
-  attributes :student_name, :student_id, :nationality, :file_url
+  attributes :student_name, :student_id, :nationality, :file_url, :student_phone, :student_email
 
   def student_name
     object.student.name || ""
@@ -15,5 +15,13 @@ class Employers::ResumesSerializer < ActiveModel::Serializer
 
   def file_url
     object.file.url
+  end
+
+  def student_phone
+    object.student.phone_number ? "+#{object.student.phone_number}" : nil
+  end
+
+  def student_email
+    object.student.email_address
   end
 end
