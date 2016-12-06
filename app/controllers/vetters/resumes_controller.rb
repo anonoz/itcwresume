@@ -10,8 +10,7 @@ class Vetters::ResumesController < VettersController
 
   def edit
     set_resume
-    @rejections_history = Resume
-      .where(student_id: @resume.student_id, status: :rejected)
+    @rejections_history = Resume.where(student_id: @resume.student_id, status: :rejected)
       .order("created_at DESC")
       .pluck(:rejection_reason)
   end

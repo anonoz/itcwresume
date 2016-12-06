@@ -1,8 +1,10 @@
 class ResumeMailer < ApplicationMailer
   def rejection_email(resume)
     @resume = resume
+    @student = resume.student
     @rejection_reason = @resume.rejection_reason
-    mail(to: @resume.student.email, subject: 'Your Resume is Rejected')
+    @to_address = @student.email_address || @student.email
+    mail(to: @to_address, subject: 'Your Resume is Rejected')
   end
 
   def approval_email(resume)
