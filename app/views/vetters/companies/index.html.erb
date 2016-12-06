@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Companies</h2>
+  <p>Recruiters created under the same company will share bookmarks.</p>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="col-xs-6">Company Name</th>
+        <th class="col-xs-3">Recruiters Count</th>
+        <th class="col-xs-3">
+          <%= link_to "New Company", new_vetters_company_path %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @companies.each do |company| %>
+      <tr>
+        <td>
+          <%= link_to company.name, vetters_company_recruiters_path(company) %>    
+        </td>
+        <td><%= @recruiters_count[company.id] || 0 %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

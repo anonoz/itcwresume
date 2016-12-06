@@ -1,26 +1,51 @@
 <div class="container">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th class="col-xs-2">Company</th> 
-        <th class="col-xs-3">Name</th>
-        <th class="col-xs-3">E-mail Address</th>
-        <th class="col-xs-2">Last Signed In</th>
-        <th><%= link_to "New", new_vetters_employer_path %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @employers.each do |employer| %>
-      <tr>
-        <td><%= employer.company_name %></td>
-        <td><%= employer.name %></td>
-        <td><%= employer.email %></td>
-        <td><%= employer.last_sign_in_at ? time_ago_in_words(employer.last_sign_in_at) + " ago" : "Never" %></td>
-        <td>
-          <%= link_to "Edit", edit_vetters_employer_path(employer) %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col-xs-6">
+      <h3>Companies</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="col-xs-2">Company</th> 
+            <th class="col-xs-3">Name</th>
+            <th><%= link_to "New", new_vetters_employer_path %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @employers.each do |employer| %>
+          <tr>
+            <td><%= employer.company_name %></td>
+            <td><%= employer.name %></td>
+            <td>
+              <%= link_to "Edit", edit_vetters_employer_path(employer) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-6">
+      <h3>HRs</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="col-xs-2">Company</th> 
+            <th class="col-xs-3">Name</th>
+            <th><%= link_to "New", new_vetters_employer_path %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @employers.each do |employer| %>
+          <tr>
+            <td><%= employer.company_name %></td>
+            <td><%= employer.name %></td>
+            <td>
+              <%= link_to "Edit", edit_vetters_employer_path(employer) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
 </div>

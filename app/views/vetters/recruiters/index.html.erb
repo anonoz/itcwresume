@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2><%= @company.name %></h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="col-xs-3">Name</th>
+            <th class="col-xs-3">E-mail Address</th>
+            <th><%= link_to "New", new_vetters_company_recruiter_path %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @recruiters.each do |recruiter| %>
+          <tr>
+            <td><%= recruiter.name %></td>
+            <td><%= recruiter.email %></td>
+            <td>
+              <%= link_to "Edit", edit_vetters_company_recruiter_path(employer) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+</div>

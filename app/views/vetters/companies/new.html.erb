@@ -1,0 +1,9 @@
+<div class="container">
+  <%= form_for @company, url: vetters_companies_path do %>
+  <div class="form-group">
+    <label for="company[name]">Company Name</label>
+    <input type="text" name="company[name]" class="form-control" required>
+  </div>
+  <button class="btn btn-default">Save</button>
+  <% end %>  
+</div>

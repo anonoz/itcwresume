@@ -9,8 +9,8 @@
         <li class="<%= 'active' if current_page?(vetters_resumes_path) %>">
           <%= link_to "Resumes (#{ Resume.pending.count })", vetters_resumes_path %>
         </li>
-        <li class="<%= 'active' if current_page?(vetters_employers_path) %>">
-          <%= link_to "Employers", vetters_employers_path %>
+        <li class="<%= 'active' if current_page?(vetters_companies_path) %>">
+          <%= link_to "Companies & Recruiters", vetters_companies_path %>
         </li>
       </ul>
 
