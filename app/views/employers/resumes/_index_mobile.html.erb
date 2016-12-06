@@ -1,0 +1,17 @@
+<div class="panel panel-default panel-resume" ng-repeat="resume in resumes | filter:search_term" ng-cloak>
+  <div class="panel-body">
+    <h4>{{ resume.student_name }}</h4>
+    <div class="pull-left">
+      <a href="mailto:{{ resume.student_email }}" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-envelope"></span>
+      </a>
+      <a href="tel:{{ resume.student_phone }}" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-earphone"></span>
+      </a>
+    </div>
+    <div class="pull-right">
+      <a href="{{ resume.file_url }}" class="btn btn-primary btn-sm" target="_blank">
+        <span class="glyphicon glyphicon-file"></span>
+      </a>
+    </div>
+</div>

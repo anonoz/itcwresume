@@ -5,5 +5,5 @@
 angular.module('employers', []).
   controller('resumes_index_controller', ['$scope', ($scope)->
     $scope.init = ->
-      $scope.resumes = JSON.parse $('#resumes_json').html()
+      $scope.resumes = JSON.parse document.getElementById('resumes_json').innerHTML
   ])
