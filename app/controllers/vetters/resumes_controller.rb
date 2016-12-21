@@ -1,8 +1,9 @@
 class Vetters::ResumesController < VettersController
   def index
-    @pending_resumes  = Resume.pending.order("updated_at DESC").includes(:student)
-    @approved_resumes = Resume.approved.order("updated_at DESC").includes(:student)
-    @rejected_resumes = Resume.rejected.order("updated_at DESC").includes(:student)
+    @latest_submissions = Resume.latest_submissions.order("updated_at DESC").includes(:students)
+    @pending_resumes  = @latest_submissions.pending
+    @approved_resumes = @latest_submissions.approved
+    @rejected_resumes = @latest_submissions.rejected
   end
 
   def show
