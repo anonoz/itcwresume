@@ -18,7 +18,8 @@ class Resume < ApplicationRecord
   
   enum job_type: {
     full_time: 1,
-    internship: 2
+    internship: 2,
+    freelance: 3
   }
 
   enum status: {
