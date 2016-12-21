@@ -3,6 +3,7 @@ class Students::ResumeController < StudentsController
   def show
     set_student
     set_resume
+    @starred_companies = Company.where(id: Progress.where(student_id: @student.id, progress: "starred").pluck(:company_id)).pluck(:name)
   end
 
   def new

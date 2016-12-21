@@ -13,5 +13,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require toaster
-//= require angular-animate

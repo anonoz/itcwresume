@@ -14,5 +14,9 @@
   <% end %>
 
   <%= render 'contact_details_form' %>
-  <%= render 'register' %>  
+  <%= render 'register' %>
 </div>
+<script type="text/javascript">
+  var easter_egg_message = "Companies that have starred you: <%= @starred_companies.to_sentence %>";
+  console.log(easter_egg_message);
+</script>
