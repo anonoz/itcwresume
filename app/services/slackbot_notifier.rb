@@ -18,12 +18,12 @@ class SlackbotNotifier
 
   def notify_resume_approved(resume)
     send_message("#{resume.student.name}'s resume is approved. "\
-      "#{Resume.pending.count - 1} left to go. ")
+      "#{Resume.latest_submissions.pending.count - 1} left to go. ")
   end
 
   def notify_resume_rejected(resume)
     send_message("#{resume.student.name}'s resume is rejected. "\
-      "#{Resume.pending.count - 1} left to go. ")
+      "#{Resume.latest_submissions.pending.count - 1} left to go. ")
   end
 
   private
