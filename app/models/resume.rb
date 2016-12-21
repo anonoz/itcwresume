@@ -36,7 +36,7 @@ class Resume < ApplicationRecord
       .order("student_id, created_at DESC"))
   }
   scope :for_employers, ->{
-    latest_submissions.approved.includes(:student)
+    latest_submissions.approved.includes(:student).order("job_type DESC")
   }
   # scope :rejected, ->{ latest_submissions.where(status: :rejected) }
   # scope :pending,  ->{ latest_submissions.where(status: :pending) }
