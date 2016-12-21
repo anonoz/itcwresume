@@ -1,7 +1,7 @@
 class EmployersController < ApplicationController
   layout 'layouts/employer'
 
-  before_action :authenticate_employer!, :set_navbar_resume_counts
+  before_action :authenticate_employer!, :set_navbar_resume_counts, :set_current_company
 
   def contact_us
   end
@@ -16,5 +16,9 @@ class EmployersController < ApplicationController
 
   def current_company
     current_employer.company
+  end
+
+  def set_current_company
+    @current_company = current_company
   end
 end

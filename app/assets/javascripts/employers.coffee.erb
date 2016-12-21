@@ -22,11 +22,29 @@ angular.module('employers', ['toaster']).
           student_id: resume.student_id,
           progress_id: progress_id
         }).then((response)->
+          # UI resume list
           $scope.resumes = $filter('filter')(
             $scope.resumes,
             (value, index)-> value.student_id != resume.student_id
             )
+
+          # UI toaster
           toaster.pop('success', "Moved", "#{resume.student_name} is moved to #{progress_id}")
+
+          # Intercom analytics
+          Intercom && Intercom('trackEvent', 'moved_resume', {
+            student_id: resume.student_id,
+            student_name: resume.student_name,
+            to_progress: progress_id
+          })
         , (response)->
           console.log(response))
+
+      $scope.open_resume = (resume_index)->
+        resume = $scope.resumes[resume_index]
+        Intercom && Intercom('trackEvent', 'opened_resume', {
+          student_id: resume.student_id,
+          student_name: resume.student_name
+        })
+
   ])

@@ -13,7 +13,7 @@
   <tbody>
     <tr ng-repeat="resume in resumes | filter:search_term" ng-cloak>
       <td>{{ resume.job_type }}</td>
-      <td><a href="{{ resume.file_url }}" target="_blank">{{ resume.student_name }}</a></td>
+      <td><a href="{{ resume.file_url }}" ng-click="open_resume($index)" target="_blank">{{ resume.student_name }}</a></td>
       <td>{{ resume.mmu_id }}</td>
       <td>{{ resume.nationality }}</td>
       <td><a href="tel:{{ resume.student_phone }}">{{ resume.student_phone }}</a></td>
