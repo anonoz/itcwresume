@@ -1,6 +1,7 @@
 <script>
   window.intercomSettings = {
     app_id: "s6xv0jqk",
+    user_id: "employer-<%= current_employer.id %>",
     name: "<%= current_employer.name %>",
     email: "<%= current_employer.email %>",
     created_at: <%= current_employer.created_at.to_i %>,

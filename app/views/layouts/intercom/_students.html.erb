@@ -1,6 +1,7 @@
 <script>
   window.intercomSettings = {
     app_id: "s6xv0jqk",
+    user_id: "student-<%= current_student.id %>",
     name: "<%= current_student.name %>",
     email: "<%= current_student.email_address.present? ? current_student.email_address : current_student.email %>",
     created_at: <%= current_student.created_at.to_i %>,
