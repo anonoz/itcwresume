@@ -7,7 +7,7 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="<%= 'active' if current_page?(vetters_resumes_path) %>">
-          <%= link_to "Resumes (#{ Resume.pending.count })", vetters_resumes_path %>
+          <%= link_to "Resumes (#{ Resume.latest_submissions.pending.count })", vetters_resumes_path %>
         </li>
         <li class="<%= 'active' if current_page?(vetters_companies_path) %>">
           <%= link_to "Companies & Recruiters", vetters_companies_path %>
