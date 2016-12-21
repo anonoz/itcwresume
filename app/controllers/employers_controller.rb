@@ -10,7 +10,7 @@ class EmployersController < ApplicationController
 
   def set_navbar_resume_counts
     inbox_count = Resume.for_employers.select("distinct student_id").count - Progress.where(company_id: current_company.id).select("distinct student_id").count
-    other_counts = Progress.group(:progress).select("distinct student_id").count
+    other_counts = Progress.where(company_id: current_company.id).group(:progress).select("distinct student_id").count
     @navbar_resume_counts = other_counts.merge(0 => inbox_count)
   end
 
