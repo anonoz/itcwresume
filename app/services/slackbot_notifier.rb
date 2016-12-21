@@ -13,7 +13,7 @@ class SlackbotNotifier
 
   def notify_resume_upload(resume)
     send_message("#{resume.student.name} has uploaded a new resume "\
-      "(rev #{resume.reuploads}). #{Resume.pending.count} pending. ")
+      "(rev #{resume.reuploads}). #{Resume.latest_submissions.pending.count} pending. ")
   end
 
   def notify_resume_approved(resume)
