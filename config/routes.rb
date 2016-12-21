@@ -17,9 +17,12 @@ Rails.application.routes.draw do
   get '/resumes' => "employers/resumes#index"
   scope '/resumes' do
     get '/search' => "employers/resumes#search", as: :search
-    get '/full-time' => "employers/resumes#full_time", as: :full_time_resumes
-    get '/internship' => "employers/resumes#internship", as: :internship_resumes
+    get '/inbox' => "employers/resumes#inbox", as: :inbox_resumes
+    get '/starred' => "employers/resumes#starred", as: :starred_resumes
+    get '/completed' => "employers/resumes#completed", as: :completed_resumes
+    get '/ignored' => "employers/resumes#ignored", as: :ignored_resumes
   end
+  match "/students/:student_id/progress", to: "employers/progresses#update", via: :put
   get "contact_us" => "employers#contact_us"
 
   # VETTER UI

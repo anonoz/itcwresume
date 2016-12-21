@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206034057) do
+ActiveRecord::Schema.define(version: 20161208104042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 20161206034057) do
     t.index ["company_id"], name: "index_employers_on_company_id", using: :btree
     t.index ["email"], name: "index_employers_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_employers_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "progresses", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "company_id"
+    t.integer "progress",   default: 0
+    t.time    "deleted_at"
+    t.index ["company_id"], name: "index_progresses_on_company_id", using: :btree
+    t.index ["student_id"], name: "index_progresses_on_student_id", using: :btree
   end
 
   create_table "resumes", force: :cascade do |t|

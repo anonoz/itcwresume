@@ -14,7 +14,7 @@ class Resume < ApplicationRecord
   enum nationality: {
     malaysian: 1,
     foreigner: 2
-  }  
+  }
   
   enum job_type: {
     full_time: 1,
@@ -35,9 +35,12 @@ class Resume < ApplicationRecord
     where(id: select("DISTINCT ON(student_id) id")
       .order("student_id, created_at DESC"))
   }
-  scope :rejected, ->{ latest_submissions.where(status: :rejected) }
-  scope :pending,  ->{ latest_submissions.where(status: :pending) }
-  scope :approved, ->{ latest_submissions.where(status: :approved) }
+  scope :for_employers, ->{
+    latest_submissions.approved.includes(:student).order("job_type DESC, student_id DESC")
+  }
+  # scope :rejected, ->{ latest_submissions.where(status: :rejected) }
+  # scope :pending,  ->{ latest_submissions.where(status: :pending) }
+  # scope :approved, ->{ latest_submissions.where(status: :approved) }
 
   private
 

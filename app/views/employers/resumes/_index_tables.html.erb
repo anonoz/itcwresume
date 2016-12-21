@@ -1,24 +1,41 @@
 <table class="table table-hover hidden-xs">
   <thead>
     <tr>
+      <th class="col-xs-1">Job Type</th>
       <th class="col-xs-2">Name</th>
       <th class="col-xs-1">Student ID</th>
       <th class="col-xs-1">Nationality</th>
       <th class="col-xs-2">Phone</th>
       <th class="class col-xs-2">E-mail Address</th>
-      <th class="col-xs-3"></th>
-      <th class="col-xs-1"></th>
+      <th class="col-xs-3">Move To</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="resume in resumes | filter:search_term" ng-cloak>
+      <td>{{ resume.job_type }}</td>
       <td><a href="{{ resume.file_url }}" target="_blank">{{ resume.student_name }}</a></td>
-      <td>{{ resume.student_id }}</td>
+      <td>{{ resume.mmu_id }}</td>
       <td>{{ resume.nationality }}</td>
       <td><a href="tel:{{ resume.student_phone }}">{{ resume.student_phone }}</a></td>
       <td><a href="mailto:{{ resume.student_email }}">{{ resume.student_email }}</a></td>
-      <td></td>
-      <td><!-- a href="#" class="btn btn-xs btn-default">Bookmark</a --></td>
+      <td>
+        <% unless current_page?(inbox_resumes_path) %>
+          <a href="#" class="btn btn-xs btn-default"
+            ng-click="update_student_progress($index, 'inbox')">Inbox</a>
+        <% end %>
+        <% unless current_page?(starred_resumes_path) %>
+          <a href="#" class="btn btn-xs btn-default" 
+            ng-click="update_student_progress($index, 'starred')">Star</a>
+        <% end %>
+        <% unless current_page?(completed_resumes_path) %>
+          <a href="#" class="btn btn-xs btn-default"
+            ng-click="update_student_progress($index, 'completed')">Complete</a>
+        <% end %>
+        <% unless current_page?(ignored_resumes_path) %>
+          <a href="#" class="btn btn-xs btn-default"
+            ng-click="update_student_progress($index, 'ignored')">Ignore</a>
+        <% end %>
+      </td>
     </tr>
   </tbody>
 </table>

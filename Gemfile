@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'angularjs-rails'
+gem 'ng-toaster-rails'
 
 # To verify MMU student identity
 gem "devise"

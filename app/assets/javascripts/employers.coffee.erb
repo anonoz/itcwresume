@@ -1,0 +1,32 @@
+#= require jquery
+#= require jquery_ujs
+#= require angular
+#= require bootstrap
+#= require angular-animate
+#= require toaster
+
+angular.module('employers', ['toaster']).
+  config([
+    "$httpProvider", ($httpProvider)->
+      $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+  ]).
+  controller('resumes_index_controller', ['$scope', '$filter', '$http', 'toaster',
+    ($scope, $filter, $http, toaster)->
+      $scope.init = ->
+        $scope.resumes = JSON.parse(
+          document.getElementById('resumes_json').innerHTML)
+
+      $scope.update_student_progress = (resume_index, progress_id)->
+        resume = $scope.resumes[resume_index]
+        $http.put("/students/#{resume.student_id}/progress", {
+          student_id: resume.student_id,
+          progress_id: progress_id
+        }).then((response)->
+          $scope.resumes = $filter('filter')(
+            $scope.resumes,
+            (value, index)-> value.student_id != resume.student_id
+            )
+          toaster.pop('success', "Moved", "#{resume.student_name} is moved to #{progress_id}")
+        , (response)->
+          console.log(response))
+  ])

@@ -2,17 +2,31 @@ class Employers::ResumesController < EmployersController
   layout 'layouts/employer'
   
   def index
-    redirect_to action: :full_time
+    redirect_to action: :inbox
   end
 
-  def full_time
-    @resumes = Resume.approved.full_time.includes(:student)
-    render_scoped_index(resumes: @resumes, resumes_type: "Full-time")
+  def inbox
+    @new_students = Student.where.not(id: Progress.where(company: current_company).pluck(:student_id))
+    @new_resumes = Resume.for_employers.where(student_id: @new_students)
+    render_scoped_index(resumes: @new_resumes, resumes_type: "New Resumes")
   end
 
-  def internship
-    @resumes = Resume.approved.internship.includes(:student)
-    render_scoped_index(resumes: @resumes, resumes_type: "Internship")
+  def starred
+    @starred_students = Student.where(id: Progress.where(progress: :starred, company: current_company).pluck(:student_id))
+    @starred_resumes = Resume.for_employers.where(student_id: @starred_students)
+    render_scoped_index(resumes: @starred_resumes, resumes_type: "Starred Resumes")
+  end
+
+  def completed
+    @completed_students = Student.where(id: Progress.where(progress: :completed, company: current_company).pluck(:student_id))
+    @completed_resumes = Resume.for_employers.where(student_id: @completed_students)
+    render_scoped_index(resumes: @completed_resumes, resumes_type: "Completed Resumes")
+  end
+
+  def ignored
+    @ignored_students = Student.where(id: Progress.where(progress: :ignored, company: current_company).pluck(:student_id))
+    @ignored_resumes = Resume.for_employers.where(student_id: @ignored_students)
+    render_scoped_index(resumes: @ignored_resumes, resumes_type: "Ignored Resumes")
   end
 
   def search
@@ -34,10 +48,15 @@ class Employers::ResumesController < EmployersController
     end
   end
 
-  private 
+  private
 
   def render_scoped_index(resumes:, resumes_type:)
-    @resumes_json = @resumes.collect {|resume| Employers::ResumesSerializer.new(resume)}.to_json
+    @title = resumes_type
+    @resumes_json = resumes.collect {|resume| Employers::ResumesSerializer.new(resume)}.to_json
     render :index_scoped
+  end
+
+  def status_update_params
+
   end
 end
