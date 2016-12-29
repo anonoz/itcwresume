@@ -19,8 +19,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Front-end fanciness
 gem 'angularjs-rails'
 gem 'ng-toaster-rails'
+gem 'groupdate'
+gem 'chartkick'
 
 # To verify MMU student identity
 gem "devise"

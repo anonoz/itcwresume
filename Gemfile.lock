@@ -67,6 +67,7 @@ GEM
     builder (3.2.2)
     byebug (9.0.6)
     callsite (0.0.11)
+    chartkick (1.4.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -96,6 +97,8 @@ GEM
       thor (~> 0.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    groupdate (2.5.2)
+      activesupport (>= 3)
     hashie (3.4.6)
     httparty (0.13.7)
       json (~> 1.8)
@@ -264,9 +267,11 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.3.6)
   byebug
+  chartkick
   coffee-rails (~> 4.2)
   devise
   figaro
+  groupdate
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener
