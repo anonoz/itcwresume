@@ -24,15 +24,15 @@
             ng-click="update_student_progress($index, 'inbox')">Inbox</a>
         <% end %>
         <% unless current_page?(starred_resumes_path) %>
-          <a href="#" class="btn btn-xs btn-default" 
+          <a href="#" class="btn btn-xs btn-primary" 
             ng-click="update_student_progress($index, 'starred')">Star</a>
         <% end %>
         <% unless current_page?(completed_resumes_path) %>
-          <a href="#" class="btn btn-xs btn-default"
+          <a href="#" class="btn btn-xs btn-success"
             ng-click="update_student_progress($index, 'completed')">Complete</a>
         <% end %>
         <% unless current_page?(ignored_resumes_path) %>
-          <a href="#" class="btn btn-xs btn-default"
+          <a href="#" class="btn btn-xs btn-danger"
             ng-click="update_student_progress($index, 'ignored')">Ignore</a>
         <% end %>
       </td>
