@@ -20,6 +20,7 @@ class Vetters::ResumesController < VettersController
     set_resume
     @resume.approved!
     redirect_to action: :index
+    ResumeMailer.approval_email(@resume).deliver_now
   end
 
   def reject
