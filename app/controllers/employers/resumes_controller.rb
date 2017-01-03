@@ -6,27 +6,27 @@ class Employers::ResumesController < EmployersController
   end
 
   def inbox
-    @new_students = Student.where.not(id: Progress.where(company: current_company).pluck(:student_id))
-    @new_resumes = Resume.for_employers.where(student_id: @new_students)
-    render_scoped_index(resumes: @new_resumes, resumes_type: "New Resumes")
+    @student_ids = Student.where.not(id: Progress.where(company: current_company).pluck(:student_id))
+    set_resumes
+    render_scoped_index(resumes: @resumes, resumes_type: "New Resumes")
   end
 
   def starred
-    @starred_students = Student.where(id: Progress.where(progress: :starred, company: current_company).pluck(:student_id))
-    @starred_resumes = Resume.for_employers.where(student_id: @starred_students)
-    render_scoped_index(resumes: @starred_resumes, resumes_type: "Starred Resumes")
+    set_student_ids_by_progress(:starred)
+    set_resumes
+    render_scoped_index(resumes: @resumes, resumes_type: "Starred Resumes")
   end
 
   def completed
-    @completed_students = Student.where(id: Progress.where(progress: :completed, company: current_company).pluck(:student_id))
-    @completed_resumes = Resume.for_employers.where(student_id: @completed_students)
-    render_scoped_index(resumes: @completed_resumes, resumes_type: "Completed Resumes")
+    set_student_ids_by_progress(:completed)
+    set_resumes
+    render_scoped_index(resumes: @resumes, resumes_type: "Completed Resumes")
   end
 
   def ignored
-    @ignored_students = Student.where(id: Progress.where(progress: :ignored, company: current_company).pluck(:student_id))
-    @ignored_resumes = Resume.for_employers.where(student_id: @ignored_students)
-    render_scoped_index(resumes: @ignored_resumes, resumes_type: "Ignored Resumes")
+    set_student_ids_by_progress(:ignored)
+    set_resumes
+    render_scoped_index(resumes: @resumes, resumes_type: "Ignored Resumes")
   end
 
   def search
@@ -56,7 +56,13 @@ class Employers::ResumesController < EmployersController
     render :index_scoped
   end
 
-  def status_update_params
+  def set_student_ids_by_progress(progress_id)
+    @student_ids = Student.
+      where(id: Progress.where(progress: progress_id, company: current_company).
+        pluck(:student_id))
+  end
 
+  def set_resumes
+    @resumes = Resume.for_employers.where(student_id: @student_ids)
   end
 end

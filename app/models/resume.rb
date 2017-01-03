@@ -36,12 +36,15 @@ class Resume < ApplicationRecord
     where(id: select("DISTINCT ON(student_id) id")
       .order("student_id, created_at DESC"))
   }
+
+  # I didn't expect there are so little full-timer submissions, I need to 
+  # buff them a bit to get noticed.
+  #
+  # Also need to nerf freelancers coz the 3 submissions too OP
+  #
   scope :for_employers, ->{
-    latest_submissions.approved.includes(:student).order("job_type DESC")
+    latest_submissions.approved.includes(:student).order("job_type ASC")
   }
-  # scope :rejected, ->{ latest_submissions.where(status: :rejected) }
-  # scope :pending,  ->{ latest_submissions.where(status: :pending) }
-  # scope :approved, ->{ latest_submissions.where(status: :approved) }
 
   private
 
