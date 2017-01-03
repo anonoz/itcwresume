@@ -32,6 +32,7 @@ gem "omniauth-google-oauth2"
 # Handle resumes upload
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2.3.0'
+gem 'pdf-reader'
 
 # Send email
 gem 'sendgrid-ruby'

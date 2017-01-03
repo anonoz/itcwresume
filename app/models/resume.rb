@@ -10,6 +10,7 @@ class Resume < ApplicationRecord
   validates_attachment :file, presence: true,
     content_type: {content_type: ["application/pdf"]},
     size: { in: 0..1.megabytes }
+  validate :resume_has_only_one_page
 
   enum nationality: {
     malaysian: 1,
@@ -62,6 +63,12 @@ class Resume < ApplicationRecord
       SlackbotNotifier.new.notify_resume_approved(self)
     when "rejected"
       SlackbotNotifier.new.notify_resume_rejected(self)
+    end
+  end
+
+  def resume_has_only_one_page
+    unless PDF::Reader.new(file.queued_for_write[:original].path).page_count == 1
+      errors.add("file_one_page", message: "must be 1 page only")
     end
   end
 

@@ -9,6 +9,9 @@
       <% if flash[:errors]['file_file_size'] %>
         <li><b>Damn!</b> Your resume PDF needs to be less than 1MB in size.</li>
       <% end %>
+      <% if flash[:errors]['file_one_page'] %>
+        <li><b>Too long!</b> Your resume can only have 1 page.</li>
+      <% end %>
       <% if Rails.env.development? %>
         <li><%= flash[:errors] %></li>
       <% end %>
