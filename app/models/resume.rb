@@ -67,6 +67,7 @@ class Resume < ApplicationRecord
   end
 
   def resume_has_only_one_page
+    return unless file.queued_for_write.any?
     unless PDF::Reader.new(file.queued_for_write[:original].path).page_count == 1
       errors.add("file_one_page", message: "must be 1 page only")
     end
