@@ -13,16 +13,24 @@
     <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="<%= 'active' if current_page?(inbox_resumes_path) %>">
-          <%= link_to "Inbox (#{@navbar_resume_counts[0]})", inbox_resumes_path %>
+          <%= link_to inbox_resumes_path do %>
+            Inbox <span class="label label-default"><%= @navbar_resume_counts[0] %></span>
+          <% end %>
         </li>
         <li class="<%= 'active' if current_page?(starred_resumes_path) %>">
-          <%= link_to "Starred (#{@navbar_resume_counts[1] || 0})", starred_resumes_path %>
+          <%= link_to starred_resumes_path do %>
+            Starred <span class="label label-default"><%= @navbar_resume_counts[1] %></span>
+          <% end %>
         </li>
         <li class="<%= 'active' if current_page?(completed_resumes_path) %>">
-          <%= link_to "Completed (#{@navbar_resume_counts[2] || 0})", completed_resumes_path %>
+          <%= link_to completed_resumes_path do %>
+            Completed <span class="label label-default"><%= @navbar_resume_counts[2] || 0 %></span>
+          <% end -%>
         </li>
         <li class="<%= 'active' if current_page?(ignored_resumes_path) %>">
-          <%= link_to "Ignored (#{@navbar_resume_counts[3] || 0})", ignored_resumes_path %>
+          <%= link_to ignored_resumes_path do %>
+            Ignored <span class="label label-default"><%= @navbar_resume_counts[3] || 0 %></span>
+          <% end -%>
         </li>
         <li class="<%= 'active' if current_page?(contact_us_path) %>">
           <%= link_to "Contact Us", contact_us_path %>
