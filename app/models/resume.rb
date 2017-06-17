@@ -30,8 +30,8 @@ class Resume < ApplicationRecord
   }
 
   before_create :generate_reupload_count
-  # after_create :notify_slackbot_create
-  # before_save :notify_slackbot_status_changed, if: :status_changed?
+  after_create :notify_slackbot_create
+  before_save :notify_slackbot_status_changed, if: :status_changed?
 
   scope :latest_submissions, ->{
     where(id: select("DISTINCT ON(student_id) id")

@@ -5,8 +5,12 @@
 <div class="row">
   <% if @resume.nil? %>
     <%= render 'not_submitted_yet' %>
-  <% else %>
-    <%= render 'uploaded' %>
+  <% elsif @resume.pending? %>
+     <%= render 'pending' %>
+  <% elsif @resume.approved? %>
+     <%= render 'approved' %>
+  <% elsif @resume.rejected? %>
+     <%= render 'rejected' %>
   <% end %>
 
   <%= render 'contact_details_form' %>
