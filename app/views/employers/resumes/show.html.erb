@@ -1,0 +1,23 @@
+<div class = "content-container">
+	<div class = "left-fixed">
+		<% if !@prev_resume_id.nil? %>
+		<%= link_to "Prev", view_resume_path(1, type: params[:type]), class: "nav-left" %>
+		<% end %>
+	</div>
+
+	<div class = "view-area">
+  	<div class="viewer-box">
+    	<iframe class = "iframe-box" src="<%= @resume.file.url %>"></iframe>
+  	</div>
+  	<div class = "link-box">
+			<%= link_to "Open in a new window", @resume.file.url, target: "_blank" %>
+  	</div>
+	</div>
+
+	<div class ="right-fixed">
+		<% if !@next_resume_id.nil? %>
+		<%= link_to "Next", view_resume_path(1, type: params[:type]), class: "nav-right" %>
+		<% end %>
+	</div>
+</div>
+
