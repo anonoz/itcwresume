@@ -5,6 +5,19 @@ class Employers::ResumesController < EmployersController
     redirect_to action: :inbox
   end
 
+  def show
+    if params[:type] == "new"
+      @student_ids = Student.where.not(id: Progress.where(company: current_company).pluck(:student_id))
+    else
+      set_student_ids_by_progress(params[:type])
+    end
+    set_resumes
+    @resume = @resumes.find_by(student_id: params[:id])
+    resumes = Resume.all
+    @next_resume_id = resumes.map(&:student_id).index((params[:id].to_i)-1)
+    @prev_resume_id = resumes.map(&:student_id).index((params[:id].to_i)+1)
+  end
+
   def inbox
     @student_ids = Student.where.not(id: Progress.where(company: current_company).pluck(:student_id))
     set_resumes

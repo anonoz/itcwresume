@@ -1,7 +1,53 @@
+/* GLOBAL STYLES */
+
+.content-container {
+	display: flex;
+}
+
 .resume-search-box {
   margin-bottom: 10px;
 }
 
 .panel.panel-resume {
   margin-top: 5px;
+}
+
+/* RESUME VIEW STYLES */
+
+.left-fixed, .right-fixed {
+	flex: 0 0 10%;
+}
+
+.left-fixed .nav-left, 
+.right-fixed .nav-right {
+	display: inline-block;
+	position: relative;
+	top: 50%;
+	text-decoration: none;
+	color: #000;
+}
+
+.left-fixed .nav-left {
+}
+
+.right-fixed .nav-right {
+	left: 50%
+}
+
+.view-area {
+	flex: 1;
+}
+
+.viewer-box {
+	height: 85vh;
+}
+.iframe-box {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+.link-box {
+	margin-top: 20px;
+	text-align: center;
 }

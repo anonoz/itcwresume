@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # EMPLOYERS UI
   get '/resumes' => "employers/resumes#index"
   scope '/resumes' do
+    get '/view/:id' => "employers/resumes#show", as: :view_resume
     get '/search' => "employers/resumes#search", as: :search
     get '/inbox' => "employers/resumes#inbox", as: :inbox_resumes
     get '/starred' => "employers/resumes#starred", as: :starred_resumes
