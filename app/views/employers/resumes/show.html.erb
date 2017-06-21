@@ -1,7 +1,7 @@
 <div class = "content-container">
 	<div class = "left-fixed">
-		<% if !@prev_resume_id.nil? %>
-		<%= link_to "Prev", view_resume_path(@prev_resume_id, type: params[:type]), class: "nav-left" %>
+		<% if !@prev_resume.nil? %>
+		<%= link_to "Prev", view_resume_path(@prev_resume.student_id, type: params[:type]), class: "nav-left" %>
 		<% end %>
 	</div>
 
@@ -15,8 +15,8 @@
 	</div>
 
 	<div class ="right-fixed">
-		<% if !@next_resume_id.nil? %>
-		<%= link_to "Next", view_resume_path(@next_resume_id, type: params[:type]), class: "nav-right" %>
+		<% if !@next_resume.nil? %>
+		<%= link_to "Next", view_resume_path(@next_resume.student_id, type: params[:type]), class: "nav-right" %>
 		<% end %>
 	</div>
 </div>
