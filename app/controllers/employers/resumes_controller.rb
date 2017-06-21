@@ -13,9 +13,8 @@ class Employers::ResumesController < EmployersController
     end
     set_resumes
     @resume = @resumes.find_by(student_id: params[:id])
-    resumes = Resume.all
-    @next_resume_id = @resumes.map(&:student_id).index((params[:id].to_i)-1)
-    @prev_resume_id = @resumes.map(&:student_id).index((params[:id].to_i)+1)
+    @next_resume_id = @resumes.map(&:student_id).index((params[:id].to_i)+1)
+    @prev_resume_id = @resumes.map(&:student_id).index((params[:id].to_i)-1)
   end
 
   def inbox
