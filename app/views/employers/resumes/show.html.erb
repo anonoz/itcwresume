@@ -1,4 +1,4 @@
-<div class = "content-container">
+<div class = "content-container" id = "resume-container">
 	<div class = "left-fixed">
 		<% if !@prev_resume.nil? %>
 		<%= link_to "Prev", view_resume_path(@prev_resume.student_id, type: params[:type]), class: "nav-left" %>

@@ -16,6 +16,10 @@ class Employers::ResumesController < EmployersController
     current_resume_index = @resumes.map(&:student_id).index(params[:id].to_i)
     @next_resume = @resumes[current_resume_index+1]
     @prev_resume = @resumes[current_resume_index-1] if current_resume_index > 0
+    respond_to do |format|
+      format.html 
+      format.js
+    end
   end
 
   def inbox
