@@ -25,6 +25,8 @@
       <div class="panel-body">
         <%= form_for @resume, url: resume_path, html: { multipart: true } do |form| %>
           <div class="form-group">
+            <label>I am...</label>
+            <br><br>
             <label>Nationality</label>
             <%= 
               collection_radio_buttons(:resume, :nationality, Resume.nationalities, :first, :first) do |b|
@@ -44,6 +46,28 @@
                 end
               end 
             %>
+          </div>
+
+          <div class = "form-group">
+            <label>In...</label>
+            <br>
+            <style>
+              .fields input{
+                position: relative;
+                left: 20px;
+
+              }
+            </style>
+                <div class = "radio fields">
+                <%= form.radio_button :isCS, true, checked: true %>
+                <%= form.label :isCS, "IT/CS-related field", value: "true" %>
+                </div>
+
+                <div class = "radio fields">
+                <%= form.radio_button :isCS, false %>
+                <%= form.label :isCS, "Others", value: "false" %>
+                </div>
+                
           </div>
           
           <div class="form-group">

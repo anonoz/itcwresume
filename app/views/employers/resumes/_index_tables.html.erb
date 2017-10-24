@@ -6,19 +6,31 @@
       <th class="col-xs-2">Name</th>
       <th class="col-xs-1">Student ID</th>
       <th class="col-xs-1">Nationality</th>
-      <th class="col-xs-2">Phone</th>
+      <th class="col-xs-1">Phone</th>
+      <th class="col-xs-1">Job type</th>
       <th class="class col-xs-2">E-mail Address</th>
       <th class="col-xs-2">Move To</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="resume in resumes | filter:search_term" ng-cloak>
+  <style>
+    .table_row {
+      display: none;
+    }
+    .show_table {
+      display: table-row;
+    }
+  </style>
+    <tr ng-repeat="resume in resumes | filter:search_term" ng-cloak class = "table_row {{ resume.isCS ? 'ITCS' : 'nonITCS' }}">
       <td><%= @title %></td>
       <td>{{ resume.job_type }}</td>
       <td><a href = "/resumes/view/{{ resume.student_id }}?type=<%=@title[/(\S+)/, 1].downcase %>">{{ resume.student_name }}</a></td>
       <td>{{ resume.mmu_id }}</td>
       <td>{{ resume.nationality }}</td>
       <td><a href="tel:{{ resume.student_phone }}">{{ resume.student_phone }}</a></td>
+      <td> {{ resume.isCS ? "IT/CS-related" : "Others" }}
+        
+      </td>
       <td><a href="mailto:{{ resume.student_email }}">{{ resume.student_email }}</a></td>
       <td>
         <% unless current_page?(inbox_resumes_path) %>
@@ -41,3 +53,38 @@
     </tr>
   </tbody>
 </table>
+  <script>
+  $(document).ready(function(){
+    var boxIT = document.querySelector("input#IT");
+    var nonBoxIT = document.querySelector("input#non-IT");
+    var studentIT = document.querySelectorAll("tr.ITCS");
+    var studentNonIT = document.querySelectorAll("tr.nonITCS");
+    for (var i = 0; i < studentIT.length; i++){
+          studentIT[i].classList.add("show_table");
+        }
+    boxIT.addEventListener("change", function(){
+      if(this.checked){
+        for (var i = 0; i < studentIT.length; i++){
+          studentIT[i].classList.add("show_table");
+        }
+      }else{
+        for (var i = 0; i < studentIT.length; i++){
+          studentIT[i].classList.remove("show_table");
+        }
+      }
+
+    });
+    nonBoxIT.addEventListener("change", function(){
+      if (this.checked){
+        for (var i = 0; i < studentNonIT.length; i++){
+          studentNonIT[i].classList.add("show_table");
+        }
+      }else{
+        for (var i = 0; i < studentNonIT.length; i++){
+          studentNonIT[i].classList.remove("show_table");
+        }
+      }
+    });
+  });
+
+  </script>

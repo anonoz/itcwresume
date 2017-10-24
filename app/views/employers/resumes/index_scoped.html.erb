@@ -4,6 +4,12 @@
     <div class="col-xs-8" >
       <input class="form-control" ng-model="search_term" placeholder="Search resume..." />
     </div>
+    <div class="col-xs-4">
+      <label>IT/CS</label>
+      <input type="checkbox" id = "IT" checked>
+      <label>Non IT/CS</label>
+      <input type="checkbox" id = "non-IT">
+    </div>
   </div>
   <%= render 'index_tables' %>
   <!-- Mobile friendly UI -->
@@ -12,4 +18,5 @@
   </div>
   <!-- Data -->
   <script type="application/json" id="resumes_json"><%= @resumes_json.html_safe %></script>
+
 </div>

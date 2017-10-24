@@ -43,6 +43,6 @@ class Students::ResumeController < StudentsController
   end
 
   def resume_params
-    params.require(:resume).permit(:file, :nationality, :job_type)
+    params.require(:resume).permit(:file, :nationality, :job_type, :isCS)
   end
 end
