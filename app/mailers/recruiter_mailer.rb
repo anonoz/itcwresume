@@ -4,6 +4,6 @@ class RecruiterMailer < ApplicationMailer
     @recruiter_email = recruiter.email
     @password = password
 
-    mail(to: "#{@recruiter_name} <#{@recruiter_email}>", subject: "You can now access IT Career Week Resumes")
+    mail(to: "#{@recruiter_name} <#{@recruiter_email}>", subject: "You can now access Tech Career Days Resumes")
   end
 end
