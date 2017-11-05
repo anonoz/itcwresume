@@ -8,7 +8,7 @@
   has_many :resumes
   has_one :resume, ->{ order 'created_at DESC' }, class_name: "Resume"
 
-  validate :email_from_mmu
+  validate :email_from_uni
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |student|
@@ -20,7 +20,7 @@
 
   private
 
-  def email_from_mmu
+  def email_from_uni
     unless /@student.mmu.edu.my$/.match(email)
       errors.add(:email, "must be student.mmu.edu.my gmail address")
     end

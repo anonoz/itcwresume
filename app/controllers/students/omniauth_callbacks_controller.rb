@@ -3,7 +3,6 @@ class Students::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
   
   def google_oauth2
     @student = Student.from_omniauth(request.env['omniauth.auth'])
-
     if @student.persisted?
       sign_in @student
       redirect_to resume_path
