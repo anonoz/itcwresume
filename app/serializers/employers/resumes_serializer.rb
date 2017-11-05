@@ -39,6 +39,6 @@ class Employers::ResumesSerializer < ActiveModel::Serializer
   end
 
   def university
-    object.student.university || ""
+    object.student.university || "MMU"
   end
 end
