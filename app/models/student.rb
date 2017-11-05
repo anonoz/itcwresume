@@ -15,14 +15,21 @@
       student.email = auth.info.email
       student.name = auth.info.name
       student.student_id = auth.info.email.split('@').first
+      domain = auth.info.email.split('@').second
+      case domain
+      when "student.mmu.edu.my"
+        student.university = "MMU"
+      when "student.tarc.edu.my"
+        student.university = "TARC"
+      end
     end
   end
 
   private
 
   def email_from_uni
-    unless /@student.mmu.edu.my$/.match(email)
-      errors.add(:email, "must be student.mmu.edu.my gmail address")
+    unless /@student.mmu.edu.my$/.match(email) or /@student.tarc.edu.my$/.match(email)
+      errors.add(:email, "must be gmail address from list of allowed domains!")
     end
   end
 end

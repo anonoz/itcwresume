@@ -7,8 +7,8 @@
     <tr>
       <th class="col-xs-3">Name</th>
       <th class="col-xs-2">Type</th>
+      <th class="col-xs-2">University</th>
       <th class="col-xs-1">Revision</th>
-      <th class="col-xs-2"></th>
       <th class="col-xs-2"></th>
       <th class="col-xs-2"></th>
     </tr>
@@ -20,12 +20,13 @@
           <%= link_to "#{resume.student.name}", resume.file.url, target: '_blank' %>
         </td>
         <td><%= resume.job_type %></td>
-        <td><%= resume.reuploads %>
+        <td><%= resume.student.university %>
         </td>
+        <td><%= resume.reuploads %></td>
         <td><%= link_to "Approve", approve_vetters_resume_path(resume), method: :patch %>
         </td>
         <td><%= link_to "Reject", edit_vetters_resume_path(resume) %></td>
-        <td></td>
+        
       </tr>
     <% end %>
   </tbody>
@@ -39,9 +40,9 @@
     <tr>
       <th class="col-xs-3">Name</th>
       <th class="col-xs-2">Type</th>
+      <th class="col-xs-2">University</th>
       <th class="col-xs-1">Revision</th>
       <th class="col-xs-2">Approved Since</th>
-      <th class="col-xs-2"></th>
       <th class="col-xs-2"></th>
     </tr>
   </thead>
@@ -52,6 +53,7 @@
           <%= link_to "#{resume.student.name}", resume.file.url, target: '_blank' %>
         </td>
         <td><%= resume.job_type %></td>
+        <td><%= resume.student.university %></td>
         <td><%= resume.reuploads %></td>
         <td><%= time_ago_in_words resume.updated_at %></td>
         <td>
@@ -71,9 +73,9 @@
     <tr>
       <th class="col-xs-3">Name</th>
       <th class="col-xs-2">Type</th>
+      <th class="col-xs-2">University</th>
       <th class="col-xs-1">Revision</th>
       <th class="col-xs-2">Rejected Since</th>
-      <th class="col-xs-2"></th>
       <th class="col-xs-2"></th>
     </tr>
   </thead>
@@ -84,6 +86,7 @@
           <%= link_to "#{resume.student.name}", resume.file.url, target: '_blank' %>
         </td>
         <td><%= resume.job_type %></td>
+        <td><%= resume.student.university %></td>
         <td><%= resume.reuploads %></td>
         <td><%= time_ago_in_words resume.updated_at %></td>
         <td>

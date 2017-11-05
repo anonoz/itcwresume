@@ -5,7 +5,14 @@
      <p>
        <%= link_to "Sign in with Google", student_google_oauth2_omniauth_authorize_path, class: 'btn btn-danger btn-lg' %>
      </p>
-    <small>Use your @student.mmu.edu.my Google account to verify your identity. Password same as MMLS.</small>  </div>
+    <small>Use your university Google account to verify your identity. For MMU students, the password is same as MMLS.</small>  
+    <br>
+		<small>List of supported universitites:</small>
+		<small><ul>
+			<li>MMU (@student.mmu.edu.my)</li>
+			<li>TARC (@student.tarc.edu.my)</li>
+		</ul></small>
+    </div>
 </div>
 <%= render "trends" %>
 <%= render "resume_checklist" %>

@@ -1,6 +1,6 @@
 class Employers::ResumesSerializer < ActiveModel::Serializer
   attributes :student_name, :student_id, :mmu_id, :nationality, :file_url, 
-             :student_phone, :student_email, :job_type, :isCS
+             :student_phone, :student_email, :job_type, :isCS, :university
 
   def student_name
     object.student.name || ""
@@ -36,5 +36,9 @@ class Employers::ResumesSerializer < ActiveModel::Serializer
 
   def isCS
     object.isCS
+  end
+
+  def university
+    object.student.university || ""
   end
 end

@@ -3,7 +3,7 @@
     <tr>
       <th class="col-xs-1">Title</th>
       <th class="col-xs-1">Job Type</th>
-      <th class="col-xs-2">Name</th>
+      <th class="col-xs-2">Name (University)</th>
       <th class="col-xs-1">Student ID</th>
       <th class="col-xs-1">Nationality</th>
       <th class="col-xs-1">Phone</th>
@@ -24,7 +24,7 @@
     <tr ng-repeat="resume in resumes | filter:search_term" ng-cloak class = "table_row {{ resume.isCS ? 'ITCS' : 'nonITCS' }}">
       <td><%= @title %></td>
       <td>{{ resume.job_type }}</td>
-      <td><a href = "/resumes/view/{{ resume.student_id }}?type=<%=@title[/(\S+)/, 1].downcase %>">{{ resume.student_name }}</a></td>
+      <td><a href = "/resumes/view/{{ resume.student_id }}?type=<%=@title[/(\S+)/, 1].downcase %>">{{ resume.student_name }} ({{ resume.university }})</a></td>
       <td>{{ resume.mmu_id }}</td>
       <td>{{ resume.nationality }}</td>
       <td><a href="tel:{{ resume.student_phone }}">{{ resume.student_phone }}</a></td>
