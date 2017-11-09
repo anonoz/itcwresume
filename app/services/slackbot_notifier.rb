@@ -1,4 +1,4 @@
-class SlackbotNotifier
+  class SlackbotNotifier
   include HTTParty
   base_uri 'https://itscyber.slack.com'
 
