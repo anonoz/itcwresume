@@ -23,6 +23,8 @@
         student.university = "TARC"
       when "mail.apu.edu.my"
         student.university = "APU"
+      when "kdu-online.com"
+        student.university = "KDU"
       end
     end
   end
@@ -30,7 +32,7 @@
   private
 
   def email_from_uni
-    unless /@student.mmu.edu.my$/.match(email) or /@student.tarc.edu.my$/.match(email) or /@mail.apu.edu.my$/.match(email)
+    unless /@student.mmu.edu.my$/.match(email) or /@student.tarc.edu.my$/.match(email) or /@mail.apu.edu.my$/.match(email) or /@kdu-online.com$/
       errors.add(:email, "must be gmail address from list of allowed domains!")
     end
   end
