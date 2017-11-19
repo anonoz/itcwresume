@@ -32,7 +32,7 @@
   private
 
   def email_from_uni
-    unless /@student.mmu.edu.my$/.match(email) or /@student.tarc.edu.my$/.match(email) or /@mail.apu.edu.my$/.match(email) or /@kdu-online.com$/
+    unless /@student.mmu.edu.my$/.match(email) or /@student.tarc.edu.my$/.match(email) or /@mail.apu.edu.my$/.match(email) or /@kdu-online.com$/.match(email)
       errors.add(:email, "must be gmail address from list of allowed domains!")
     end
   end
