@@ -27,8 +27,8 @@
         student.university = "KDU"
       when "1utar.my"
         student.university = "UTAR"
-      when "xmu.edu.my"
-        student.university = "XMUMC"
+      when "student.newinti.edu.my"
+        student.university = "INTI"
       end
     end
   end
@@ -36,7 +36,7 @@
   private
 
   def email_from_uni
-    unless /@student.mmu.edu.my$/.match(email) or /@student.tarc.edu.my$/.match(email) or /@mail.apu.edu.my$/.match(email) or /@kdu-online.com$/.match(email) or /@1utar.my$/.match(email) or /@xmu.edu.my$/.match(email)
+    unless /@student.mmu.edu.my$/.match(email) or /@student.tarc.edu.my$/.match(email) or /@mail.apu.edu.my$/.match(email) or /@kdu-online.com$/.match(email) or /@1utar.my$/.match(email) or /@student.newinti.edu.my$/.match(email)
       errors.add(:email, "must be gmail address from list of allowed domains!")
     end
   end
