@@ -23,3 +23,6 @@
 public/system/
 public/full_time
 public/internship
+
+# Ignore database backup files
+latest.dump
