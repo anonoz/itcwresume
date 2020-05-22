@@ -4,7 +4,7 @@ ruby "2.3.1"
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg', '~> 0.18'
 gem 'paper_trail'
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.12'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
